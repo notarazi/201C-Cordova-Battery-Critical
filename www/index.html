@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BPG Example</title>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        document.addEventListener("deviceready",onDeviceReady,false);
+             function onDeviceReady(){
+               window.addEventListener("batterystatus", onBatteryCritical, false);
+                 function onBatteryLow(status)
+                   {
+                     console.log(status);
+                     alert("Battery Level Critical " + status.level + "%\nRecharge Soon!");                
+                     document.getElementById('appmessage').innerHTML=
+                       JSON.stringify(status);
+                   }
+                 }
+    </script>
+</head>
+<body>
+    <div id='appmessage' style='background-color:lightyellow;width:200px;word-wrap: break-word;'>
+        ...
+    </div>
+</body>
+</html>
